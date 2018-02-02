@@ -1,0 +1,6 @@
+backend/db/
+backend/dist/
+backend/node_modules/
+frontend/.nuxt/
+frontend/node_modules/
+proxy/node_modules/
