@@ -4,9 +4,10 @@ import Sequelize from 'sequelize';
 //var db = Path.resolve(__dirname, '../../db/Db.sqlite');
 //const Db = new Sequelize(`sqlite://${db}`);
 
-const Db = new Sequelize('unixjs01', 'unixjs', 'K3J9 8LMN 02F3 B3LW', {
+const Db = new Sequelize('jeromotos', 'jeromotos', 'A3U7K 9DQPL 63VZI HH7Y1 CFR50', {
   host: 'localhost',
-  dialect: 'postgres',
+  dialect: 'mysql',
+  sync: {force: true},
   pool: {
     max: 5,
     min: 0,
@@ -20,7 +21,7 @@ const UserGroup = Db.import(__dirname + "/Types/Seq/UserGroup");
 User.belongsToMany(Group, {through: 'UserGroup'});
 Group.belongsToMany(User, {through: 'UserGroup'});
 
-
+/*
 //############# contable ################
 const DianIdentificacion = Db.import(__dirname + "/Types/Seq/DianIdentificacion");
 const DianPais = Db.import(__dirname + "/Types/Seq/DianPais");
@@ -255,9 +256,11 @@ Cuenta.hasMany(ConfIngreso, {foreignKey: 'CuentaDebitoId'});
 
 ConfIngreso.belongsTo(Cuenta, {as: 'CuentaCredito', foreignKey: 'CuentaCreditoId'});
 Cuenta.hasMany(ConfIngreso, {foreignKey: 'CuentaCreditoId'});
+*/
 
 
 //open connection
+Db.sync({force: true});
 Db.authenticate().then(() => {
   console.log('Db conection success');
   /*Db.query("PRAGMA foreign_keys=ON").spread( (Result, Metadata) => {
