@@ -1,7 +1,7 @@
 <template lang="pug">
 doctype html
 v-app(id="sandbox" :dark="dark" :light="!dark" standalone)
-  v-navigation-drawer(v-model="primaryDrawer.model" persistent='persistent')
+  v-navigation-drawer(v-model="primaryDrawer.model" persistent='persistent' dark)
     v-list(dense)
       template(v-for="(item, i) in items")
         v-list-tile(:key="i" nuxt link :to="item.to")
@@ -35,7 +35,7 @@ v-app(id="sandbox" :dark="dark" :light="!dark" standalone)
   export default {
     data: () => {
       return {
-        dark: true,
+        dark: false,
         primaryDrawer: {
           model: true,
           type: 'persistent',
@@ -47,19 +47,9 @@ v-app(id="sandbox" :dark="dark" :light="!dark" standalone)
           fixed: true
         },
         items: [
-          { icon: 'person', text: 'Usuario', to: '/usuario' },
-          { icon: 'group', text: 'Grupo', to: '/grupo' },
-          { icon: 'group_work', text: 'Tercero', to: '/tercero' },
-          { icon: 'assignment', text: 'Cuenta', to: '/cuenta' },
-          { icon: 'assignment_returned', text: 'Ingreso', to: '/ingreso' },
-          { icon: 'assignment_late', text: 'Causación', to: '/causacion' },
-          { icon: 'description', text: 'Nota', to: '/nota' },
-          { icon: 'assignment_return', text: 'Pago', to: '/pago' },
-          { icon: 'perm_contact_calendar', text: 'Nómina', to: '/nomina' },
-          { icon: 'book', text: 'Informe', to: '/informe' },
-          { icon: 'settings', text: 'Configuración', to: '/configuracion' },
+          { icon: 'settings', text: 'Mantenimiento', to: '/mantenimiento' },
         ],
-        title: 'Administración Contable'
+        title: 'Administración Jeromotos'
       }
     },
     methods: {

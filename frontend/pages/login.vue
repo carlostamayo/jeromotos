@@ -8,7 +8,7 @@
             img(src="/v.png" alt="logo.gis")
 
           h6(class="pt-4 grey--text text--lighten-4") Inicie Sessión
-          p(class="pb-4") Con su cuenta GIS
+          p(class="pb-4") Con su cuenta {{ Empresa }}
 
           v-text-field(label="Nombre de Usuario"  v-model="UserName" class="pb-3")
           v-text-field(label="Contraseña" v-model="Password" type="password" :maxlength="4")
@@ -19,6 +19,10 @@
 
 </template>
 
+<style lang="stylus">
+
+</style>
+
 <script>
   import axios from 'axios'
 
@@ -26,7 +30,8 @@
     data () {
       return {
         UserName: null,
-        Password: null
+        Password: null,
+        Empresa: 'Jeromotos'
       }
     },
     layout: 'plain',

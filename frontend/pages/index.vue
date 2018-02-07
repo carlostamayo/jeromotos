@@ -15,7 +15,7 @@ div(class="hello")
 
 <script>
 
-import GCarousel from '~components/GCarousel.vue'
+/*import GCarousel from '~components/GCarousel.vue'
 import GIconGrid from '~components/GIconGrid.vue'
 import GSection1 from '~components/GSection1.vue'
 import GSection2 from '~components/GSection2.vue'
@@ -23,7 +23,7 @@ import GSection3 from '~components/GSection3.vue'
 import GSection4 from '~components/GSection4.vue'
 import GSection5 from '~components/GSection5.vue'
 import GTestimonios from '~components/GTestimonios.vue'
-import GContact from '~components/GContact.vue'
+import GContact from '~components/GContact.vue'*/
 
 
 export default {
@@ -33,7 +33,7 @@ export default {
   },
   layout: 'page',
   components: {
-    GCarousel,
+    /*GCarousel,
     GIconGrid,
     GSection1,
     GSection2,
@@ -41,7 +41,7 @@ export default {
     GSection4,
     GSection5,
     GTestimonios,
-    GContact
+    GContact*/
   },
   head () {
     return {
