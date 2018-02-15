@@ -56,6 +56,7 @@
         },
         items: [
           { icon: 'settings', text: 'Mantenimiento', to: '/mantenimiento' },
+          { icon: 'person', text: 'Usuarios', to: '/usuarios' },
         ],
         title: 'Administración Jeromotos'
       }
