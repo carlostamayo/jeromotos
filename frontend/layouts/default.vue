@@ -55,10 +55,19 @@
           fixed: true
         },
         items: [
-          { icon: 'settings', text: 'Mantenimiento', to: '/mantenimiento' },
+          { icon: 'build', text: 'Orden de Trabajo', to: '/ordenTrabajo' },
+          { icon: 'build', text: 'Agregar Orden de Trabajo', to: '/agregarOrdenTrabajo' },
           { icon: 'person', text: 'Usuarios', to: '/usuarios' },
-        ],
-        title: 'Administración Jeromotos'
+          { icon: 'motorcycle', text: 'Tipo Moto', to: '/tipoMoto' },
+          { icon: 'motorcycle', text: 'Motocicleta', to: '/motocicleta' },
+          { icon: 'build', text: 'Servicio Taller', to: '/serviciotaller' },
+          { icon: 'motorcycle', text: 'Marca', to: '/marca' },
+          { icon: 'build', text: 'Tabla Mantenimiento', to: '/tablaMantenimiento' },
+          { icon: 'person', text: 'Prueba', to: '/prueba' },
+          { icon: 'person', text: 'Prueba Data', to: '/pruebaDataTable' },
+         ],
+        title: 'Administración Jeromotos',
+        icono:"build"
       }
     },
     methods: {

@@ -5,8 +5,8 @@
         <v-card>
           <v-toolbar class="cyan" >
             <!--<v-toolbar-side-icon></v-toolbar-side-icon>-->
-            <v-icon dark>person</v-icon>
-            <v-toolbar-title class="white--text">Usuarios</v-toolbar-title>
+            <v-icon dark>motorcycle</v-icon>
+            <v-toolbar-title class="white--text">Marca</v-toolbar-title>
             <v-fab-transition>
               <v-btn
                 class="indigo"
@@ -25,84 +25,62 @@
           </v-toolbar>
           </v-card-text>
             
-          <v-layout class="pa-3 pt-4">
+            <v-layout class="pa-3 pt-4">
             <v-card-text class="gray pb-0 pt-0 elevation-2">
               <v-layout>
-                <v-flex xs12 sm2>
-                  <v-text-field
-                    label="Cedula"
-                    class="chirrete-text-field"
-                  ></v-text-field>
-                </v-flex>
                 <v-flex xs12 sm4>
                   <v-text-field
-                    label="Nombre"
+                    label="Marca"
                     class="chirrete-text-field"
                   ></v-text-field>
                 </v-flex>
-                <v-spacer></v-spacer>
-                <v-btn fab large icon>
-                  <v-icon>search</v-icon>
-                </v-btn>
-              </v-layout>
-            </v-card-text>
-          </v-layout>
-          
-          <v-layout v-if="abrir" class="pa-3">
-            <v-card-text class="gray pb-0 pt-0 elevation-2" >
-                <v-layout>
-                  <v-flex xs12 sm2>
-                    <v-text-field
-                      label="Cedula"
-                      class="chirrete-text-field"
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm4>
-                    <v-text-field
-                      label="Nombre"
-                      class="chirrete-text-field"
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm2>
-                    <!--<v-text-field
-                      label="Direccion"
-                      class="chirrete-text-field"
-                    ></v-text-field>-->
-                    <v-select
+                <!--<v-flex xs12 sm2>
+                  <v-select
                     v-bind:items="states"
                     v-model="a1"
-                    label="Rol"
+                    label="Marca"
                     autocomplete
                   ></v-select>
+                </v-flex>
+                <v-flex xs12 sm2>
+                  <v-text-field
+                    label="Cilindraje"
+                    class="chirrete-text-field"
+                  ></v-text-field>
+                </v-flex>-->
+                
+                  <v-spacer></v-spacer>
+                  <v-btn fab large icon>
+                    <v-icon>search</v-icon>
+                  </v-btn>
+                
+              </v-layout>
+            </v-card-text>
+            </v-layout>
+            <v-layout v-if="abrir" class="pa-3">
+              <v-card-text class="gray pb-0 pt-0 elevation-2" >
+                <v-layout>
+                  <v-flex xs12 sm4>
+                    <v-text-field
+                      label="Marca"
+                      class="chirrete-text-field"
+                    ></v-text-field>
                   </v-flex>
+                  <!--<v-flex xs12 sm3>
+                    <v-select
+                        v-bind:items="states"
+                        v-model="a1"
+                        label="Marca"
+                        autocomplete
+                    ></v-select>
+                 </v-flex>
                   <v-flex xs12 sm2>
                     <v-text-field
-                      label="Telefono"
+                      label="Duracion"
                       class="chirrete-text-field"
                     ></v-text-field>
-                  </v-flex>
-                  
-                </v-layout>
-                <v-layout>
-                  <v-flex xs12 sm3>
-                    <v-text-field
-                      label="Ciudad"
-                      class="chirrete-text-field"
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm4>
-                    <v-text-field
-                      label="Direccion"
-                      class="chirrete-text-field"
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm4>
-                    <v-text-field
-                      label="e-mail"
-                      class="chirrete-text-field"
-                    ></v-text-field>
-                  </v-flex>
-                  <v-flex xs12 sm1></v-flex>
+                  </v-flex>-->
+                  <v-flex xs12 sm7></v-flex>
                   <v-btn dark fab small class="pink" @click.native="Agregar" v-model="abrir">
                       <v-icon>save</v-icon>
                   </v-btn>
@@ -110,6 +88,30 @@
                       <v-icon>cancel</v-icon>
                   </v-btn>
                 </v-layout>
+                <!--<v-layout>
+                  <v-flex xs12 sm3>
+                    <v-text-field
+                      label="Eliminar"
+                      class="chirrete-text-field"
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm3>
+                    <v-text-field
+                      label="Telefono"
+                      class="chirrete-text-field"
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm3>
+                    <v-text-field
+                      label="e-mail"
+                      class="chirrete-text-field"
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 sm10></v-flex>
+                  <v-btn dark fab small class="pink" @click.native="Cerrar" v-model="abrir">
+                      <v-icon>cancel</v-icon>
+                  </v-btn>
+                </v-layout>-->
                 <v-spacer></v-spacer>
               </v-card-text>
             </v-layout>
@@ -122,10 +124,8 @@
               v-bind:search="search"
         >
               <template slot="items" scope="props">
-                <td style="font-weight: bold; width:20%;">{{ props.item.cedula }}</td>
-                <td class="text-xs-left" style="width:50%;">{{ props.item.nombre}}</td>
-                <td class="text-xs-left" style="width:20%;">{{ props.item.telefono}}</td>
-                <td class="ma-0 pa-0 pl-2">
+                <td style="font-weight: bold; width:90%;">{{ props.item.marca|uppercase}}</td>
+                  <td class="text-xs-right ma-0 pa-0 pl-2" style="width:5px">
                   <v-btn dark fab small class="cyan" @click.native="Abrir" v-model="abrir">
                       <v-icon>edit</v-icon>                   
                     </v-btn>
@@ -154,44 +154,36 @@
       return {
           
           abrir:false,
-          cedula:null,
-          nombre:null,
-          abrir:false,
+          marca:null,
           headers: [
           {
-            text: 'Cedula',
+            text: 'Marca',
             align: 'left',
             sortable: false,
-            value: 'cedula'
-          },
-          {
-            text: 'Nombre',
-            align: 'left',
-            sortable: false,
-            value: 'nombre'
-          },
-          {
-            text: 'Telefono',
-            align: 'left',
-            sortable: false,
-            value: 'telefono'
+            value: 'marca'
           },
         ],
         items: [
           {
-            cedula:"1065864163",
-            nombre:"Carlos  Andres Tamayo Benjumea",
-            telefono:"3136817175",
+            marca:"yamaha",
           },
           {
-            cedula:"1065864163",
-            nombre:"Carlos  Andres Tamayo Benjumea",
-            telefono:"3136817175",
+            marca:"suzuki",
           },
           {
-            cedula:"1065864163",
-            nombre:"Jose del Carmen aristizabal zabaleta fernandez de la peña",
-            telefono:"3136817175",
+            marca:"auteco",
+          },
+          {
+            marca:"kawasaki",
+          },
+          {
+            marca:"akt",
+          },
+          {
+            marca:"tvs",
+          },
+          {
+            marca:"honda",
           },
         ] 
       }
