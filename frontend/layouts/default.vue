@@ -1,37 +1,42 @@
-<template lang="pug">
-doctype html
-v-app(id="sandbox" :dark="dark" :light="!dark" standalone)
-  v-navigation-drawer(v-model="primaryDrawer.model" persistent='persistent' dark)
-    v-list(dense)
-      template(v-for="(item, i) in items")
-        v-list-tile(:key="i" nuxt link :to="item.to")
-          v-list-tile-action
-            v-icon(dark) {{ item.icon }}
-
-          v-list-tile-content
-            v-list-tile-title {{ item.text }}
-
-      v-list-tile(@click.native="logout")
-        v-list-tile-action
-          v-icon(dark) exit_to_app
-
-        v-list-tile-content
-          v-list-tile-title Salir
-
-  v-toolbar(fixed class="grey darken-2 white--text ")
-    v-toolbar-side-icon(@click.native.stop="primaryDrawer.model = !primaryDrawer.model" v-if="primaryDrawer.type !== 'permanent'")
-    v-toolbar-title {{ title }}
-    <v-spacer></v-spacer>
-    <v-btn icon>
-            <v-icon>search</v-icon>
-    </v-btn>
-  main
-    v-container(fluid mb-5 pt-0)
-      nuxt
-
-  v-footer(fixed)
-    <span> © {{ new Date().getFullYear() }} </span> Joiner Sánchez & Carlos Tamayo
-
+<template>
+<!DOCTYPE html>
+<v-app id="sandbox" :dark="dark" :light="!dark" standalone>
+  <v-navigation-drawer v-model="primaryDrawer.model" persistent='persistent' dark>
+    <v-list dense>
+      <template v-for="(item, i) in items">
+        <v-list-tile :key="i" nuxt link :to="item.to">
+          <v-list-tile-action>
+            <v-icon> {{ item.icon }} </v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title> {{ item.text }} </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </template>
+      <v-list-tile @click.native="logout">
+        <v-list-tile-action>
+          <v-icon> exit_to_app </v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title> Salir </v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+    </v-list>
+  </v-navigation-drawer>
+  <v-toolbar fixed>
+    <v-toolbar-side-icon @click.native.stop="primaryDrawer.model = !primaryDrawer.model" v-if="primaryDrawer.type !== 'permanent'">
+      <v-toolbar-title> {{ title }} </v-toolbar-title>
+    </v-toolbar-side-icon>
+  </v-toolbar>
+  <main>
+    <v-container fluid mb-5 pt-0>
+      <nuxt/>
+    </v-container>
+  </main>
+  <v-footer fixed>
+    <span> © {{ new Date().getFullYear() }} </span> Jose Luis Cáceres Escudero
+  </v-footer>
+</v-app>
 </template>
 
 <script>
