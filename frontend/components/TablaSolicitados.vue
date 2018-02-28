@@ -8,7 +8,7 @@
     >
       <template slot="items" scope="props">
         <td style="font-weight: bold;" id="colum">{{ props.item.name |uppercase }}</td>
-        <td class="text-xs-center"><v-checkbox label="" 
+        <td class="text-xs-center"><v-checkbox label=""
                         v-model="props.item.modelo"
                         color="secondary"
                         value="true"
@@ -16,7 +16,7 @@
       </template>
    </v-data-table>
    <br><br>
-   
+
    <!--<v-layout row>
     <v-data-table
         v-bind:headers="headers2"
@@ -32,7 +32,7 @@
     </v-data-table>
    </v-layout>-->
    <p>Cliente Solicita</p>
-   <v-layout v-for="(item, i) in items2">
+   <v-layout v-for="(item, i) in items2" :key="item">
      <v-text-field
      label="*"
     >{{item.name}}</v-text-field>
@@ -56,7 +56,7 @@
         ],
         items: [
           {
-            name: 'Cambio de Aceite', 
+            name: 'Cambio de Aceite',
             modelo: "Solicitado",
           },
           {

@@ -16,15 +16,13 @@
                 absolute
                 bottom
                 right
-                v-show="!hidden"
-                 @click.native="Abrir"
-              >
+                @click.native="Abrir">
                 <v-icon>add</v-icon>
               </v-btn>
             </v-fab-transition>
           </v-toolbar>
           </v-card-text>
-            
+
           <v-layout class="pa-3 pt-4">
             <v-card-text class="gray pb-0 pt-0 elevation-2">
               <v-layout>
@@ -47,7 +45,7 @@
               </v-layout>
             </v-card-text>
           </v-layout>
-          
+
           <v-layout v-if="abrir" class="pa-3">
             <v-card-text class="gray pb-0 pt-0 elevation-2" >
                 <v-layout>
@@ -55,13 +53,13 @@
                     <v-text-field
                       label="Cedula"
                       class="chirrete-text-field"
-                    ></v-text-field>
+                      v-model="cedula"></v-text-field>
                   </v-flex>
                   <v-flex xs12 sm4>
                     <v-text-field
                       label="Nombre"
                       class="chirrete-text-field"
-                    ></v-text-field>
+                      v-model="nombre"></v-text-field>
                   </v-flex>
                   <v-flex xs12 sm2>
                     <!--<v-text-field
@@ -69,46 +67,44 @@
                       class="chirrete-text-field"
                     ></v-text-field>-->
                     <v-select
-                    v-bind:items="states"
-                    v-model="a1"
                     label="Rol"
-                    autocomplete
-                  ></v-select>
+                    autocomplete></v-select>
                   </v-flex>
                   <v-flex xs12 sm2>
                     <v-text-field
                       label="Telefono"
                       class="chirrete-text-field"
-                    ></v-text-field>
+                      v-model="telefono"></v-text-field>
                   </v-flex>
-                  
+
                 </v-layout>
                 <v-layout>
                   <v-flex xs12 sm3>
                     <v-text-field
                       label="Ciudad"
                       class="chirrete-text-field"
-                    ></v-text-field>
+                      v-model="ciudad"></v-text-field>
                   </v-flex>
                   <v-flex xs12 sm4>
                     <v-text-field
                       label="Direccion"
                       class="chirrete-text-field"
-                    ></v-text-field>
+                      v-model="direccion"></v-text-field>
                   </v-flex>
                   <v-flex xs12 sm4>
                     <v-text-field
                       label="e-mail"
                       class="chirrete-text-field"
-                    ></v-text-field>
+                      v-model="email"></v-text-field>
                   </v-flex>
-                  <v-flex xs12 sm1></v-flex>
-                  <v-btn dark fab small class="pink" @click.native="Agregar" v-model="abrir">
-                      <v-icon>save</v-icon>
-                  </v-btn>
-                  <v-btn dark fab small class="pink" @click.native="Cerrar" v-model="abrir">
-                      <v-icon>cancel</v-icon>
-                  </v-btn>
+                  <v-flex xs12 sm4>
+                    <v-btn dark fab small class="pink" @click.native="guardar" v-model="abrir">
+                        <v-icon>save</v-icon>
+                    </v-btn>
+                    <v-btn dark fab small class="pink" @click.native="Cerrar" v-model="abrir">
+                        <v-icon>cancel</v-icon>
+                    </v-btn>
+                  </v-flex>
                 </v-layout>
                 <v-spacer></v-spacer>
               </v-card-text>
@@ -127,7 +123,7 @@
                 <td class="text-xs-left" style="width:20%;">{{ props.item.telefono}}</td>
                 <td class="ma-0 pa-0 pl-2">
                   <v-btn dark fab small class="cyan" @click.native="Abrir" v-model="abrir">
-                      <v-icon>edit</v-icon>                   
+                      <v-icon>edit</v-icon>
                     </v-btn>
                 </td>
                 <td class="text-xs-right ma-0 pa-0">
@@ -141,21 +137,32 @@
                    </v-btn>
                 </td>
               </template>
-          </v-data-table> 
-        </v-layout> 
+          </v-data-table>
+        </v-layout>
         </v-card>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 <script>
+
+  import axios from 'axios';
+
   export default {
     data () {
       return {
-          
+          api: 'http://localhost:8080/api/v1/usuarios',
           abrir:false,
+          search: null,
+
+          id: null,
           cedula:null,
           nombre:null,
+          telefono: null,
+          ciudad: null,
+          direccion: null,
+          email: null,
+
           abrir:false,
           headers: [
           {
@@ -193,18 +200,41 @@
             nombre:"Jose del Carmen aristizabal zabaleta fernandez de la peña",
             telefono:"3136817175",
           },
-        ] 
+        ]
       }
     },
     methods:{
       Abrir(){
-        this.abrir=true
-        console.log(this.abrir)
+        this.abrir=true;
+        //console.log(this.abrir);
       },
       Cerrar(){
-        this.abrir=false
-        console.log(this.abrir)
+        this.abrir=false;
+        this.cancelar();
+        //console.log(this.abrir);
       },
+      guardar () {
+        axios.post(this.api, {
+          cedula: this.cedula,
+          nombre: this.nombre,
+          telefono: this.telefono,
+          ciudad: this.ciudad,
+          direccion: this.direccion,
+          email: this.email,
+          rol: 'cliente'
+        }).then(res => {
+          console.log(res.data)
+        });
+      },
+      cancelar () {
+        this.Cedula = null;
+        this.cedula = null;
+        this.nombre = null;
+        this.telefono = null;
+        this.ciudad = null;
+        this.direccion = null;
+        this.email = null;
+      }
     }
   }
 </script>

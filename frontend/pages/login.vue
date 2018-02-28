@@ -19,7 +19,7 @@
           <v-btn primary dark  class="mb-3" @click.native.stop="login">Continuar</v-btn>
         </v-card-actions>
        </v-card>
-    </v-flex> 
+    </v-flex>
   </v-layout>
 </template>
 
@@ -28,7 +28,7 @@
 </style>
 
 <script>
-  import axios from 'axios'
+  import axios from 'axios';
 
   export default {
     data () {
